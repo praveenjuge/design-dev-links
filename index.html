@@ -38,15 +38,18 @@
 
           get(source) {
             rss_parser.parseURL(source, (err, feed) => {
-              if (err) console.error(err);
-              feed.items.forEach((entry) => {
-                if (new Date(entry.pubDate).toDateString() === new Date().toDateString()) {
-                  this.itemsData.push({
-                    title: entry.title,
-                    link: entry.link,
-                  });
-                }
-              });
+              if (err) {
+                console.error(err);
+              } else {
+                feed.items.forEach((entry) => {
+                  if (new Date(entry.pubDate).toDateString() === new Date().toDateString()) {
+                    this.itemsData.push({
+                      title: entry.title,
+                      link: entry.link,
+                    });
+                  }
+                });
+              }
             });
           },
 
@@ -57,6 +60,9 @@
                 json.forEach((source) => {
                   this.get(CORS_PROXY + source);
                 });
+              })
+              .catch((error) => {
+                console.error("Error:", error);
               });
           },
         };

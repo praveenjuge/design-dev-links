@@ -10,7 +10,7 @@ whitelist = [ "^http.?://www.zibri.org$", "zibri.org$", "test\\..*" ];  // regex
 */
 
 blacklist = []; // regexp for blacklisted urls
-whitelist = ["^http.?://designdevlinks.netlify.app$", "designdevlinks.netlify.app$", "http://localhost:5000/"]; // regexp for whitelisted origins
+whitelist = ["^http.?://designdevlinks.netlify.app$", "designdevlinks.netlify.app$", "^http.?://localhost:5000"]; // regexp for whitelisted origins
 
 function isListed(uri, listing) {
   var ret = false;
